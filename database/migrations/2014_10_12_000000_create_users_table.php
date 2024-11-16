@@ -19,11 +19,12 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->foreignId('allergy_id')->nullable();
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Reverse the migrations.ここでユーザー定義をしていく
      */
     public function down(): void
     {
