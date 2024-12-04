@@ -15,7 +15,7 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('include.create')" :active="request()->routeIs('include.create')">
+                    <x-nav-link :href="route('include.index')" :active="request()->routeIs('include.index')">
                         {{ __('お酒（元）') }}
                     </x-nav-link>
                 </div>

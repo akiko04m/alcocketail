@@ -9,9 +9,16 @@ use App\Models\Includealchole;
 
 class IncludeController extends Controller
 {
+    public function index(Includealchole $includes){
+        return view('include.\show')->with(['includes' => $includes->get()]);
+        return redirect('/dashboard');
+    }//今回のindex = 一番最初に見られるファイル大元
+
     public function create(){
-        return view('include/create');//viewsから見た目を持ってくる
+        //return view('include/create');//viewsから見た目を持ってくる
+        return view('include.create')->with(['categories' => $includes->get()]);
     }
+
 
     public function sort(Request $request, Includealchole $include){
        // $include=new Includealchole

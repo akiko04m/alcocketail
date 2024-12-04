@@ -11,6 +11,11 @@ class Includealchole extends Model
     protected $table = 'includes';
     protected $fillable = [
         'name',
-        'strange'
+        'strange',
+        'cocktails_id'
     ];
+
+    public function cocktails(){
+    return $this->belongsToMany(cocktails::class);
+    }
 }
