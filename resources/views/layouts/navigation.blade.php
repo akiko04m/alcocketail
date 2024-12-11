@@ -18,6 +18,9 @@
                     <x-nav-link :href="route('include.index')" :active="request()->routeIs('include.index')">
                         {{ __('お酒（元）') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('include.cocktail')" :active="request()->routeIs('include.cocktail')">
+                        {{ __('お酒（元）') }}
+                    </x-nav-link>
                 </div>
             </div>
 

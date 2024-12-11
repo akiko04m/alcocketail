@@ -12,10 +12,9 @@ class Includealchole extends Model
     protected $fillable = [
         'name',
         'strange',
-        'cocktails_id'
     ];
 
     public function cocktails(){
-    return $this->belongsToMany(cocktails::class);
+        return $this->belongsToMany(Cocktail::class,'cocktail_include','include_id','cocktail_id');
     }
 }
