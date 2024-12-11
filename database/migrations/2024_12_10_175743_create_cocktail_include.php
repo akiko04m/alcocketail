@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cocktails_includes', function (Blueprint $table)
-        {
+        Schema::create('cocktail_include', function (Blueprint $table) {
+            //$table->id();
             $table->foreignId('include_id')->constrained('includes');   //参照先のテーブル名を
             $table->foreignId('cocktail_id')->constrained('cocktails');    //constrainedに記載
             $table->primary(['include_id', 'cocktail_id']); //primaryは主キーを決める関数
+            $table->timestamps();
         });
     }
 
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cocktails_includes');
+        Schema::dropIfExists('cocktail_include');
     }
 };
