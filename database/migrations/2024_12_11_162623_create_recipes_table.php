@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('recipes', function (Blueprint $table) {
             $table->id();
             $table->string('name', 50);
-            $table->integer('strange');
-            $table->text('process');//text型は文字数制限がないよ！
+            $table->integer('strange')->nullable(true);
+            $table->text('process')->nullable(true);//text型は文字数制限がないよ！
             $table->timestamps();
             $table->softDeletes();
         });

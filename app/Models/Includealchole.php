@@ -1,4 +1,6 @@
 <?php
+//Modelの設計図
+//モデルclassを使いたいときはインスタンス化（実体化）させる
 
 namespace App\Models;
 
@@ -17,4 +19,9 @@ class Includealchole extends Model
     public function cocktails(){
         return $this->belongsToMany(Cocktail::class,'cocktail_include','include_id','cocktail_id');
     }
+
+    public function recipes(){
+        return $this->belongsToMany(Recipe::class,'include_recipe','include_id','recipe_id');
+    }
+
 }

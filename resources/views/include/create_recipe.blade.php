@@ -1,6 +1,6 @@
 <x-app-layout>
-  未設定
-  <form action="/" method="POST">
+  <form action="/recipe" method="POST">
+  <!-- actionはsubmitがされた際にformタグ内をactionで指定しているルーティングめがけて、送信する -->
       @csrf
       <div>
           <h2>レシピ名</h2>
@@ -10,28 +10,27 @@
 
       <div>
           <h2>使用するお酒</h2>
-          @foreach($includes as $include)
-              <label>
-                  {{-- valueを'$subjectのid'に、nameを'配列名[]'に --}}
-                  <input type="checkbox" value="{{ $include->id }}" name="includes_array[]">
-                      {{$include->include_name}}
-                  </input>
-              </label>
+          <div>
+              <input type="text" id="search" placeholder="お酒の名前で検索" oninput="filterOptions()">
+              @foreach($includes as $include)
+                <label>
+                    {{-- valueを'$subjectのid'に、nameを'配列名[]'に --}}
+                    <input type="checkbox" value="{{ $include->id }}" name="includes_array[]">
+                    {{--nameが連想配列のキーになってるよ！--}}
+                        {{$include->name}}
+                    </input>
+                </label>
+              @endforeach
 
-          @endforeach
+              {{--<select id="alcohol-options" name="recipe[alcohol][]" multiple size="10">
+                  @foreach($includes as $include)
+                      <option value="{{ $include->id }}">{{ $include->name }}</option>
+                  @endforeach
+              </select>--}}
+          </div>
       </div>
 
-      {{--
-      <div>
-          <h2>学年</h2>
-          <input type="text" name="student[grade]" placeholder="学年" />
-      </div>
-
-      <div>
-          <h2>年齢</h2>
-          <input type="text" name="student[age]" placeholder="年齢" />
-      </div>
-      --}}
 
     <input type="submit" value="保存"/>
+  </form>
 </x-app-layout>

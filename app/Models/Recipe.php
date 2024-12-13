@@ -12,7 +12,7 @@ class Recipe extends Model
         'name',
         'strange',
         'process'
-    ];
+    ];//fillable:文字を入力する能力を与える
 
     public function includes(){
         return $this->belongsToMany(Includealchole::class,'include_recipe','recipe_id','include_id');

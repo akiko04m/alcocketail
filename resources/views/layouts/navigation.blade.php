@@ -21,6 +21,12 @@
                     <x-nav-link :href="route('include.cocktail')" :active="request()->routeIs('include.cocktail')">
                         {{ __('お酒（元）') }}
                     </x-nav-link>
+                    {{--<x-nav-link :href="route('include.recipe')" :active="request()->routeIs('include.cocktail')">
+                        {{ __('recipe一覧') }}
+                    </x-nav-link>--}}
+                    <x-nav-link :href="route('include.recipe.create')" :active="request()->routeIs('include.recipe.create')">
+                        {{ __('recipe作成') }}
+                    </x-nav-link>
                 </div>
             </div>
 
