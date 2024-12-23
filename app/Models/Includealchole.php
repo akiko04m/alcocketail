@@ -24,4 +24,11 @@ class Includealchole extends Model
         return $this->belongsToMany(Recipe::class,'include_recipe','include_id','recipe_id');
     }
 
+    public function getByIncludealc(int $limit_count = 10)
+    {
+        return $this->recipes()->with('include')->orderBy('updated_at', 'DESC')->get();
+        //$this:モデル自身のこと
+        //ORM 
+    }
+
 }
