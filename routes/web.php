@@ -32,9 +32,10 @@ Route::controller(IncludeController::class)->middleware(['auth'])->group(functio
 
 //middleware(['auth']):ログインしている人だけ使える
 Route::controller(RecipeController::class)->middleware(['auth'])->group(function () {
-    //Route::get('ルーティング', 'メソッド名')->name('include.recipe.create');
+    //Route::get('ルーティング', 'コントローラーのメソッド名')->name('include.recipe.create');
     Route::get('/recipe/create', 'recipe_create')->name('include.recipe.create');//クライアントサイド側でデータが欲しいよってときに使う
     Route::post('/recipe', 'edit');//何かデータを送りたいとき、送信したいとき、などに使う
+    Route::get('/recipe/show', 'show')->name('include.recipe');
 });
 
 Route::controller(CocktailController::class)->middleware(['auth'])->group(function () {

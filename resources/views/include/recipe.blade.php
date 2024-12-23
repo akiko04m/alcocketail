@@ -2,31 +2,35 @@
   <div class='recipe_show'>
 
         {{-- カクテルの数だけ繰り返す --}}
-        @foreach($cocktails as $cocktail)
+        @foreach($recipes as $recipe)
+          <div class='m-5'>
 
-            レシピ名:
-            <h3 class='name'>{{ $recipe->name }}</h3>
+            <h3 class='name'>レシピ名: {{ $recipe->name }}</h3>
 
-            カクテル名:
-            <h4 class='cocktail'>{{ $cocktail->name }}</h4>
+            {{--カクテル名:
+            <h4 class='cocktail'>{{ $cocktail->name }}</h4>--}}
 
             含むもの:
             <h5 class='include_alc'>
             @foreach($recipe->includes as $includealc)
-                {{ $inlucdealc->include_name }}
+                {{ $includealc->include_name }}
             @endforeach
             </h5>
 
-            レシピ内容:
-            <h5 class='process'>
+            @if(!empty($recipe->process))
+            レシピ手順:
+            <h5 class='process'><!-- $index:順番 -->
+              @foreach(explode( '/', $recipe->process) as $index=>$process)
+                 <p>{{$index + 1}}: {{ $process }} </p>
+              @endforeach
+            </h5>
+            @endif
+            
+            {{--強さ:
+            <h5 class='age'>{{ $cocktail->strange }}</h5>--}}
 
             </h5>
-
-            強さ:
-            <h5 class='age'>{{ $cocktail->strange }}</h5>
-
-            </h5>
-
+          </div>
         @endforeach
 
     </div>

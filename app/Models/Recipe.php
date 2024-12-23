@@ -21,4 +21,6 @@ class Recipe extends Model
     public function cocktail(){
         return $this->belongsTo(Cocktail::class);
     }
+
+    
 }
