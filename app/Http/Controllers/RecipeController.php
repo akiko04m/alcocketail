@@ -39,7 +39,7 @@ class RecipeController extends Controller
         //dd($input_recipe);
 
         $recipe->fill($input_recipe)->save();
-        dd($recipe);
+        //dd($recipe);
         $recipe->includes()->attach($input_includes);
 
         // texts を JSON デコードして配列に変換
@@ -49,19 +49,30 @@ class RecipeController extends Controller
         return redirect('/recipe/create');
     }
 
-    public function show(Recipe $recipe){
+    public function show(Recipe $recipe, Includealchole $inc){
         //形式的にはバックエンドのほうがいい
         $include = new Includealchole;
+        // dump($include);
+        // dd($inc);
+        //$inc = Includealchole::find(1);
+        //上記を書かなくていい奴→暗黙の結合（ルーティングにｉｄを入れることで勝手にとってきてくれる）
+        $title = $inc['name'].'のレシピ';
+        $recipes = $inc->recipes()->get();
 
-        $recipes = $include->find(5)->recipes()->get();
+        //$recipes = $include->recipes()->get();
         //$recipesは変数だから関数を使えない
 
-        return view('include/recipe')->with(['recipes' => $recipes]);
-        //return view('include/recipe')->with(['recipes' => $recipes->get()]);
+        //dd($recipes);
 
+        return view('include/recipe')->with(['recipes' => $recipes, 'title'=>$title]);
+        //return view('include/recipe')->with(['recipes' => $recipes->get()]);
+        //複数渡しは,で区切ればおっけいだよ～
     }
 
-
-
-
+    public function all_show(Recipe $recipe){
+        $recipes = $recipe->with('includes')->get();
+        $title = "全てのレシピ";
+        //dd($recipes[0]->includes);
+        return view('include/recipe')->with(['recipes' => $recipes, 'title'=>$title]);
+    }
 }

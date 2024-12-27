@@ -1,6 +1,20 @@
 <x-app-layout>
+  @push('styles')
+    <!-- この中にheadタグに書くはずだったものを書くよ -->
+    <link rel="stylesheet" href="{{ asset('css/sample.css') }}">
+    <!-- assetでpublic内のモノを参照できるよ！ -->
+  @endpush
+  <x-slot name="header">
+    <div class ='flex justify-between items-center'>
+      <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+          {{ $title }}
+      </h2>
+      <a href='' class='bg-gray-300 w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-400 hover:-translate-y-0.5 '>+</a>
+      <!--tailwindちゅうやつや！！！ブックマークをみるんや-->
+    </div>
+  </x-slot>
+  <div>レシピ数：{{count($recipes)}}</div>
   <div class='recipe_show'>
-
         {{-- カクテルの数だけ繰り返す --}}
         @foreach($recipes as $recipe)
           <div class='m-5'>
@@ -13,7 +27,11 @@
             含むもの:
             <h5 class='include_alc'>
             @foreach($recipe->includes as $includealc)
-                {{ $includealc->include_name }}
+                <a href='/recipe/show/{{$includealc->id}}' id='includealc'>
+                  {{ $includealc->name }}
+                </a>
+                <!-- aタグはハイパーリンクだよ！ -->
+                <!-- hrefがハイパーリファレンスの略だよ！ -->
             @endforeach
             </h5>
 
@@ -25,7 +43,7 @@
               @endforeach
             </h5>
             @endif
-            
+
             {{--強さ:
             <h5 class='age'>{{ $cocktail->strange }}</h5>--}}
 
