@@ -1,0 +1,19 @@
+a {
+  color:blue;
+
+}
+
+/* idは#、タグは何もなし、classは.を、前に着ける */
+/* cssは下にあるやつが強い */
+/* classは「重複があり得る＊同じclassを何回もかいてよし」&「tailwindを使ってるclass内でも使えて、cssのほうが強いよ＊上書きされるから*/
+/* idは重複がない＊ピンポイントに使う時だけ */
+/* 藤森さんアドバイス：cssとtailwindを一緒にばかすか使ってると、うまくいかなくなったときにどいつが悪さしてるかわかりにくくなるから、すみわけしてあげてね */
+
+#includealc {
+
+}
+
+.recipe_make_a{
+  background-color: red;
+  color: white;
+}

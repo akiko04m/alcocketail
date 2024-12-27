@@ -16,11 +16,12 @@ class Recipe extends Model
 
     public function includes(){
         return $this->belongsToMany(Includealchole::class,'include_recipe','recipe_id','include_id');
+        //return $this->belongsToMany(Includealchole::class);
     }
 
     public function cocktail(){
         return $this->belongsTo(Cocktail::class);
     }
 
-    
+
 }
