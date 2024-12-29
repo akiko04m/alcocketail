@@ -6,6 +6,7 @@
           <h2>レシピ名</h2>
           <input type="text" name="recipe[name]" placeholder="レシピ名" />
           <!-- typeとか、nameとか、は属性！ -->
+          <!-- <input type="text" name="recipe[name]" placeholder="レシピ名" />のように閉じタグ無く完結するやつは最後に/>だよ！ -->
       </div>
 
       <div>
@@ -19,6 +20,10 @@
                 </input>
             </label>
           @endforeach
+      </div>
+      <div>
+        <h2>アルコール度数</h2>
+        <input type="number" name="recipe[strange]" />
       </div>
 
   <!-- プロセス入力部分 -->
