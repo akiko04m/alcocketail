@@ -28,7 +28,7 @@ class Includealchole extends Model
     {
         return $this->recipes()->with('include')->orderBy('updated_at', 'DESC')->get();
         //$this:モデル自身のこと
-        //ORM 
+        //ORM
     }
 
 }

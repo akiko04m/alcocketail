@@ -20,6 +20,7 @@
           <div class='m-5'>
 
             <h3 class='name'>レシピ名: {{ $recipe->name }}</h3>
+            <h4>作成者: <a href='/recipe/user/{{ $recipe->user->id }}'>{{ $recipe->user->name }}</a></h4>
 
             {{--カクテル名:
             <h4 class='cocktail'>{{ $cocktail->name }}</h4>--}}
@@ -44,8 +45,9 @@
             </h5>
             @endif
 
-            {{--強さ:
-            <h5 class='age'>{{ $cocktail->strange }}</h5>--}}
+            強さ:
+            <h5 class='strange'>{{ $recipe->strange }}</h5>
+
 
             </h5>
           </div>

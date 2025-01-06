@@ -11,7 +11,8 @@ class Recipe extends Model
     protected $fillable = [
         'name',
         'strange',
-        'process'
+        'process',
+        'user_id'
     ];//fillable:文字を入力する能力を与える
 
     public function includes(){
@@ -22,6 +23,11 @@ class Recipe extends Model
     public function cocktail(){
         return $this->belongsTo(Cocktail::class);
     }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
 
 
 }

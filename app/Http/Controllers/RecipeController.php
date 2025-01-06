@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Recipe;
 use App\Models\Includealchole;
+use App\Models\User;
 
 //phpは動的型付け言語！！わからんくなったら調べろ！！！
 
@@ -35,7 +36,8 @@ class RecipeController extends Controller
         //dd($combinedTexts);
         // 結合したデータを Recipe モデルの process に保存
         $input_recipe['process'] = $combinedTexts;
-
+        $input_recipe['user_id'] = auth()->user()->id;
+        //
         //dd($input_recipe);
 
         $recipe->fill($input_recipe)->save();
@@ -67,6 +69,13 @@ class RecipeController extends Controller
         return view('include/recipe')->with(['recipes' => $recipes, 'title'=>$title]);
         //return view('include/recipe')->with(['recipes' => $recipes->get()]);
         //複数渡しは,で区切ればおっけいだよ～
+    }
+
+    public function user_show(Recipe $recipe, User $user){
+        $recipes = $user->recipes()->get();
+        $title = $user['name'].'のレシピ';
+
+        return view('include/recipe')->with(['recipes' => $recipes, 'title'=>$title]);
     }
 
     public function all_show(Recipe $recipe){

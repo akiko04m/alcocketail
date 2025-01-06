@@ -16,8 +16,10 @@ return new class extends Migration
             $table->string('name', 50);
             $table->integer('strange')->nullable(true);
             $table->text('process')->nullable(true);//text型は文字数制限がないよ！
+            $table->foreignId('user_id')->constrained();
             $table->timestamps();
             $table->softDeletes();
+
         });
     }
 

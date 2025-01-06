@@ -12,7 +12,6 @@ Route::get('/', function(){
     return view('welcome');
 });
 
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -36,6 +35,7 @@ Route::controller(RecipeController::class)->middleware(['auth'])->group(function
     Route::get('/recipe/create', 'recipe_create')->name('include.recipe.create');//クライアントサイド側でデータが欲しいよってときに使う
     Route::post('/recipe', 'edit');//何かデータを送りたいとき、送信したいとき、などに使う
     Route::get('/recipe/show/{inc}', 'show');
+    Route::get('/recipe/user/{user}', 'user_show');
     ///show/{inc}の部分はコントローラーで行っているよ！
     Route::get('/recipe/show/', 'all_show')->name('include.recipe');
 });
